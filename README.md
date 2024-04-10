@@ -1,13 +1,5 @@
 ## Projeto
 
-Esse Start Kit faz parte do vídeo lançado no Canal sobre Autenticação Social no NextJS utilizando NextAuth.
-
-![Screen Shot 2022-06-06 at 08 55 34](https://user-images.githubusercontent.com/29440533/172155883-de67c16f-3df0-439e-9c0b-1d6de9b86720.png)
-
-![Screen Shot 2022-06-06 at 08 55 55](https://user-images.githubusercontent.com/29440533/172155925-bb322b6e-9227-4665-a1fa-e7875c0b43d8.png)
-
-## Como rodar
-
 Para iniciar o projeto, primeiramente instale as dependências utilizando:
 
 ```
@@ -20,7 +12,10 @@ Após, rode:
 yarn dev
 ```
 
-Para iniciar o Projeto
+Para iniciar o Projeto crie na raiz do projeto o arquivo '.env.local' dentro dele contendo as variaveis 
+GITHUB_ID=pega no github em settings > developers settings > OAuth Apps
+GITHUB_SECRET=pega no github em settings > developers settings > OAuth Apps
+SECRET=pega no site https://www.uuidgenerator.net/version4
 
-## Link para o Vídeo:
+## Link para o Vídeo usado de base para o projeto: https://www.youtube.com/watch?v=hc-sNg2-FtI&ab_channel=dogcode
 

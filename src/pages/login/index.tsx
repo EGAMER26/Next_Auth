@@ -1,8 +1,16 @@
 import { Box, Button, Flex, Input, InputGroup, InputLeftElement, Link, Text, useTheme } from "@chakra-ui/react";
+import { GetServerSideProps } from "next";
 import { FiGithub, FiLock, FiUser } from 'react-icons/fi';
+import { getSession, signIn } from 'next-auth/react';
+import { FormEvent } from "react";
 
 function Login() {
   const theme = useTheme();
+
+  const onSubmit = (e: FormEvent) => {
+    signIn('credentials');
+    e.preventDefault()
+  }
 
   return (
     <Flex
@@ -10,7 +18,7 @@ function Login() {
       height="100vh"
       alignItems="center"
       justifyContent="center">
-      <form onSubmit={() => { }}>
+      <form onSubmit={onSubmit}>
         <Box
           width="428px"
         >
@@ -73,12 +81,30 @@ function Login() {
               leftIcon={<FiGithub color={theme.colors.gray['100']} />}
               color={theme.colors.gray['100']}
               _hover={{ backgroundColor: "gray.700" }}
-              onClick={() => { }}>Github</Button>
+              onClick={() => signIn('github')}>Github</Button>
           </Flex>
         </Box>
       </form>
     </Flex>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const session = await getSession(context)
+  
+  if(session) {
+    return {
+      redirect: {
+        destination: '/home',
+        permanent: false,
+      }
+    }
+  }
+  return {
+  props: {
+    session
+  }
+}
 }
 
 export default Login;
